@@ -1,5 +1,5 @@
 const server = require('./src/server');
-const PORT = 3001;
+const PORT = process.env.PORT || 5000;
 const { database } = require('./src/db');
 const {getCountries} = require('./src/controllers/countriesControl');
 

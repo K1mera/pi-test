@@ -29,8 +29,8 @@ useEffect(() => {
 
   return (
     <> 
-      <SearchComponent/>
-      {/* <CountriesList/> */}
+      {/* <SearchComponent/> */}
+      <CountriesList/>
     </>
   )
 }

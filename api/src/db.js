@@ -7,7 +7,7 @@ const CountryMod = require('./models/Country');
 const ActivityMod = require('./models/Activity')
 
 const database = new Sequelize(
-    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_ROUTE}`, 
+    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}`, 
     {logging: false }
 );
 
