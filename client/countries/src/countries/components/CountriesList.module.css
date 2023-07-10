@@ -1,0 +1,33 @@
+.cardList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.pagesBtn {
+    display: flex;
+    flex-direction: row;
+    padding: 40px;
+    gap: 15px !important;
+}
+
+.pagesBtn button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    
+}
+
+.pagesBtn button:hover {
+    color: #149BE7;
+    transition: all 0.5s;
+}
+
+.pagesBtn button:disabled, .pagesBtn button:hover {
+    opacity: 0.5;
+    color: white;
+}

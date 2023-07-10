@@ -1,0 +1,22 @@
+.navBar {
+    width: 95%;
+    height: 6vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px !important;
+    font-weight: 600;
+    padding: 10px 40px;
+}
+
+.navBar a {
+    color: white;
+}
+
+.navElements {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px !important;
+    flex-direction: row;
+}

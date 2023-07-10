@@ -1,0 +1,68 @@
+
+* {
+    font-family: Poppins;
+    gap: 5px !important;
+}
+
+.searchBar {
+    width: 40%;
+    height: 7%;
+    border-radius: 50px;
+    border: none;
+    text-align: center;
+    
+    font-weight: 400;
+}
+
+.primaryBtn {
+    background-color: #149BE7;
+        border: none;
+        border-radius: 15px;
+        padding: 20px;
+        width: 132px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 13px;
+        color: #fff;
+        font-weight: 600;
+        transition: all 0.5s;
+        margin-top: 17px;
+}
+
+.primaryBtn button:hover {
+    background-color: #fff;
+    color: #149BE7;
+    transform: scale(1.2);
+    transition: all 0.5s;
+    cursor: url(/assets/rocket-cursor.svg), auto;
+}
+
+.secondaryBtn {
+    background-color: rgba(0, 0, 0, 0);
+    border: solid 2px #149BE7;
+    border-radius: 15px;
+    padding: 20px;
+    width: 128px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.5s;
+    margin-top: 17px;
+}
+
+.btnContainer {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 10px !important;
+    justify-content: center;
+    align-items: center;
+
+}
