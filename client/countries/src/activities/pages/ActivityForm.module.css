@@ -1,0 +1,8 @@
+.container {
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px !important;
+    justify-content: center;
+}

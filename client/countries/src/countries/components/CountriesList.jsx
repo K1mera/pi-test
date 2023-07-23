@@ -1,89 +1,72 @@
+import { useEffect } from "react";
+import { CardCountry } from "./CardCountry";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountries, getCountryById } from "../../store/";
 
-import axios from 'axios'
-import { useEffect, useState } from 'react';
-import {CardCountry} from './CardCountry';
-
-import styles from './CountriesList.module.css'
-
+import styles from "./CountriesList.module.css";
 
 export const CountriesList = () => {
+  const dispatch = useDispatch();
+  const { countries, currentPage, totalPages, queryParam } = useSelector(
+    (state) => state.countries
+  );
 
-    const [country, setCountry] = useState([])
-    const [startIndex, setStartIndex] = useState({
-        page: 1,
-        size: 0
-    });
-    
+  const startIndex = (currentPage - 1) * 8;
 
-     useEffect( () => {
-    axios.get('http://localhost:3001/all-countries')
-      .then(response => {
-        setCountry( response.data.slice(0, 26) )
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
+  useEffect(() => {
+    if (queryParam === "") {
+      dispatch(getCountries(currentPage));
+    }
+  }, [dispatch, currentPage, queryParam]);
 
-  const handleNextPage = () => {
-    const nextPage = startIndex.page + 1;
-    const sizing = startIndex.size + 8;
-
-    setStartIndex( {
-        page: nextPage,
-        size: sizing
-    } );
-  };
+  const filteredCountries = queryParam
+    ? countries.filter((country) =>
+        country.name.toLowerCase().includes(queryParam.toLowerCase())
+      )
+    : countries;
 
   const handlePreviousPage = () => {
-    const nextPage = startIndex.page - 1;
-    const sizing = startIndex.size - 8;
-
-    setStartIndex( {
-        page: nextPage,
-        size: sizing
-    } );
+    if (currentPage > 1) {
+      dispatch(getCountries(currentPage - 1));
+    }
   };
 
-  const pagination = country.slice(startIndex.size, startIndex.size + 8 );
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      dispatch(getCountries(currentPage + 1));
+    }
+  };
 
-
- const lastPage = () => {
-    const totalItems = country.length;
-    const totalPages = Math.ceil( totalItems / 8 )
-    
-    
-    return startIndex.page === totalPages 
-    
- }
-
-
+  // const handleCountryClick = (id) => {
+  //   dispatch(getCountryById(id));
+  //   // console.log(id)
+  // };
 
   return (
     <>
-    <ul className={ styles.cardList }>
-        {
-            pagination.map( item => 
-            <CardCountry 
-                key={ item.id }
-                flag={ item.flag_image_url }
-                name={ item.name }
-                continent={ item.continent } />
-            )
-        }
-    </ul>
-    <div className={ styles.pagesBtn }>
-        <button 
-            onClick={ handlePreviousPage }
-            disabled={ startIndex.page === 1 ? true : false}
-        >Previous</button>
-        <button 
-            onClick={ handleNextPage }
-            disabled={  lastPage() }
-        >Next</button>
-    </div>
+      <section className={styles.cardListContent}>
+        <ul className={styles.cardList}>
+          {filteredCountries.slice(startIndex, startIndex + 8).map((item) => (
+            <CardCountry
+              key={item.id}
+              id={item.id}
+              flag={item.flag_image_url}
+              name={item.name}
+              continent={item.continent}
+              // onClick={() => handleCountryClick(item.id)}
+            />
+          ))}
+        </ul>
+      </section>
 
-    
+      <div className={styles.pagesBtn}>
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
     </>
-  )
-}
+  );
+};

@@ -12,6 +12,8 @@ const {
   createActivity,
 } = require("../controllers/activity.control");
 
+
+
 router.get("/all-countries", async (req, res) => {
   try {
     const allCountries = await getAllCountries();
@@ -32,13 +34,13 @@ router.get("/countries", async (req, res) => {
 
 router.get("/countries/name", async (req, res) => {
   const name = req.query.name;
-   if (!name) {
+  if (!name) {
     return res.status(400).json({ message: "name is mandatory" });
   }
   try {
     const countryName = await getCountryByName(name);
-    if ( !countryName || countryName.length === 0 ) {
-        res.status(404).json('Not countries found')
+    if (!countryName || countryName.length === 0) {
+      res.status(404).json('Not countries found');
     }
     res.status(200).json(countryName);
   } catch (error) {

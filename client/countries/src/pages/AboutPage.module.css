@@ -56,6 +56,7 @@ opacity: 0;
   gap: 50px !important;
   animation: fadeInMove 1s ease-in 1.5s normal forwards;
   opacity: 0;
+  
 }
 
 .title h2 {

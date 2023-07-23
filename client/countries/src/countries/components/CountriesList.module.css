@@ -3,31 +3,46 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    width: auto;
+    height: 100%;
+    box-sizing: border-box;
+     /* padding-bottom: 0 !important; */
+    
 
 }
 
-.pagesBtn {
+.cardListContent {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagesBtn {
+    display: inline-flex;
     flex-direction: row;
-    padding: 40px;
+    padding-top: 10px;
     gap: 15px !important;
+    bottom: 0px;
+    height: 10%;
+    
 }
 
 .pagesBtn button {
     background-color: rgba(0, 0, 0, 0);
     border: none;
     color: white;
-    font-size: 15px;
+    font-size: 0.9rem;
     font-weight: 500;
+    transition: color 1s;
     
 }
 
 .pagesBtn button:hover {
     color: #149BE7;
-    transition: all 0.5s;
+    transition: color 1s;
 }
 
-.pagesBtn button:disabled, .pagesBtn button:hover {
+.pagesBtn button:disabled {
     opacity: 0.5;
     color: white;
 }

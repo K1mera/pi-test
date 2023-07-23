@@ -1,12 +1,18 @@
-import React, {useEffect} from 'react'
+import { useEffect } from 'react'
 
 
 
 import img from '/assets/planet-earth-background.png'
-import {SearchComponent} from '../countries/components/SearchComponent';
-import {CountriesList} from '../countries/components/CountriesList';
+import { SearchComponent, CountriesList } from '../countries/components';
+import { useSelector } from 'react-redux';
+
 
 export const HomePage = () => {
+
+  // const dispatch = useDispatch();
+  const { searched } = useSelector( state => state.countries );
+
+  
 
 useEffect(() => {
     document.documentElement.style.backgroundImage = `url(${img})`;
@@ -26,11 +32,17 @@ useEffect(() => {
     };
   }, []);
   
+  
 
   return (
     <> 
-      {/* <SearchComponent/> */}
-      <CountriesList/>
+      {!searched ? (
+        <>
+        <SearchComponent />
+        </>
+      ) : (
+        <CountriesList />
+      )}
     </>
   )
 }

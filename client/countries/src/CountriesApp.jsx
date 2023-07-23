@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react'
+import React from 'react'
+import { Provider } from 'react-redux'
+import { store } from './store/store'
 
 
 
-import { Router } from 'react-router-dom'
 import { MainRouter } from './routes/MainRouter'
 
 export const CountriesApp = () => {
@@ -10,6 +11,8 @@ export const CountriesApp = () => {
 
 
   return (
-    <MainRouter/>
+    <Provider store={ store }>
+      <MainRouter/> 
+    </Provider>
   )
 }

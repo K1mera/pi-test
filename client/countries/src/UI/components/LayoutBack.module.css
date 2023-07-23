@@ -18,6 +18,7 @@
     border-radius: 30px;
     transition: all 1s;
     transition-delay: 1s;
+    
     /* position: relative; */
 }
 
@@ -62,17 +63,18 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    box-sizing: border-box;
 }
 
 .contentAbout {
     height: 76vh;
     width: 100%;
-    padding: 10px;
+    padding-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: 60px !important;
-    
+    box-sizing: border-box;
     
 }
