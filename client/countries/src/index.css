@@ -14,3 +14,15 @@
   margin: 0;
   padding: 0;
 }
+
+@media (max-width: 575.98px) {
+
+  /* Your styles for extra small devices here */
+  :root {
+      padding: 20px 20px;
+      
+  
+    }
+
+    /* position: relative; */
+  }

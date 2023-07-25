@@ -1,80 +1,146 @@
 .layoutHome {
-    width: calc(100vw - 240px);
-    height: calc(100vh - 130px);
-    padding-top: 20px;
-    padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background: rgba(67, 30, 41, 0.41) ;
+  width: calc(100vw - 240px);
+  height: calc(100vh - 130px);
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: rgba(67, 30, 41, 0.41);
+  box-shadow: 0px 4px 30px 2px rgba(255, 255, 255, 0.25) inset;
+  border-radius: 30px;
+  /* overflow: hidden; */
+  backdrop-filter: blur(40px);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  display: inline-flex;
+  border-radius: 30px;
+  transition: all 1s;
+  transition-delay: 1s;
+
+  /* position: relative; */
+}
+
+.layoutAbout {
+  width: calc(100vw - 240px);
+  height: calc(100vh - 130px);
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: rgba(28, 28, 28, 0.41);
+  box-shadow: 0px 4px 30px 2px rgba(255, 255, 255, 0.25) inset;
+  border-radius: 30px;
+  /* overflow: hidden; */
+  backdrop-filter: blur(40px);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  display: inline-flex;
+  border-radius: 30px;
+  transition: all 1s;
+  transition-delay: 0.5s;
+}
+
+.navigation {
+  height: 10vh;
+  width: 100%;
+  padding: 10px 40px;
+}
+
+.content {
+  height: 76vh;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.contentAbout {
+  height: 76vh;
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 60px !important;
+  box-sizing: border-box;
+}
+
+/* Extra small devices (phones, 576px and down) */
+@media (max-width: 575.98px) {
+  /* Your styles for extra small devices here */
+  .layoutHome {
+    width: calc(100vw - 80px);
+    height: calc(100vh - 100px);
+
+    background: rgba(67, 30, 41, 0.41);
     box-shadow: 0px 4px 30px 2px rgba(255, 255, 255, 0.25) inset;
     border-radius: 30px;
     /* overflow: hidden; */
     backdrop-filter: blur(40px);
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 15px;
     display: inline-flex;
     border-radius: 30px;
     transition: all 1s;
     transition-delay: 1s;
-    
+
+  }
+    .layoutAbout {
+  width: calc(100vw - 80px);
+  height: calc(100vh - 100px);
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: rgba(28, 28, 28, 0.41);
+  box-shadow: 0px 4px 30px 2px rgba(255, 255, 255, 0.25) inset;
+  border-radius: 30px;
+  /* overflow: hidden; */
+  backdrop-filter: blur(40px);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  display: inline-flex;
+  border-radius: 30px;
+  transition: all 1s;
+  transition-delay: 0.5s;
+}
     /* position: relative; */
-}
-
-.layoutAbout {
-    width: calc(100vw - 240px);
-    height: calc(100vh - 130px);
-    padding-top: 20px;
-    padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background: rgba(28, 28, 28, 0.41);
-    box-shadow: 0px 4px 30px 2px rgba(255, 255, 255, 0.25) inset;
-    border-radius: 30px;
-    /* overflow: hidden; */
-    backdrop-filter: blur(40px);
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 15px;
-    display: inline-flex;
-    border-radius: 30px;
-    transition: all 1s;
-    transition-delay: 0.5s;
-
-}
-
-
-
-
-.navigation {
+  .navigation {
     height: 10vh;
     width: 100%;
     padding: 10px 40px;
+  }
 }
 
-.content {
-    height: 76vh;
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    box-sizing: border-box;
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Your styles for small devices here */
 }
 
-.contentAbout {
-    height: 76vh;
-    width: 100%;
-    padding-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 60px !important;
-    box-sizing: border-box;
-    
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Your styles for medium devices here */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Your styles for large devices here */
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Your styles for extra large devices here */
 }

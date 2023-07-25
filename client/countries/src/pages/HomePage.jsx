@@ -4,14 +4,14 @@ import { useEffect } from 'react'
 
 import img from '/assets/planet-earth-background.png'
 import { SearchComponent, CountriesList } from '../countries/components';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+// import { resetSearch } from '../store';
 
 
 export const HomePage = () => {
 
   // const dispatch = useDispatch();
   const { searched } = useSelector( state => state.countries );
-
   
 
 useEffect(() => {
@@ -36,12 +36,12 @@ useEffect(() => {
 
   return (
     <> 
-      {!searched ? (
+      {searched ? (
         <>
-        <SearchComponent />
+        <CountriesList />
         </>
       ) : (
-        <CountriesList />
+        <SearchComponent />
       )}
     </>
   )

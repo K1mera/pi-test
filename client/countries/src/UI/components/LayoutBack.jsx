@@ -5,7 +5,7 @@ import styles from './LayoutBack.module.css'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { HomePage, AboutPage } from '../../pages'
 import { SingleCountry } from '../../countries/components'
-import {ActivityForm} from '../../activities/pages/activityForm'
+import {ActivityForm} from '../../activities/pages/ActivityForm'
 
 
 

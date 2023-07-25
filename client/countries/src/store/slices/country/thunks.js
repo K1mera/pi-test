@@ -1,46 +1,62 @@
-import { setCountries, startLoadingCountries, setCurrentPage, countriesByName, searchedQueary, searchPerformed, countriesById } from "./countrySlice"
-import { countryIns } from '../../../api/countryInstance'
+import {
+  setCountries,
+  startLoadingCountries,
+  setCurrentPage,
+  countriesByName,
+  searchedQueary,
+  searchPerformed,
+  countriesById,
+  cleanSearch,
+} from "./countrySlice";
+import { countryIns } from "../../../api/countryInstance";
 
+export const getCountries = (page = 1) => {
+  return async (dispatch) => {
+    dispatch(startLoadingCountries());
 
-export const getCountries = ( page = 0 ) => {
-    return async ( dispatch ) => {
-        dispatch( startLoadingCountries() );
+    const { data } = await countryIns.get("/all-countries");
+    // console.log( data );
 
-        const { data } =  await countryIns.get('/all-countries')
-        // console.log( data );
-
-        dispatch(setCountries(data));
-
-        dispatch(setCurrentPage(page));
-    }
-}
-
-export const getCountryByName = ( name = '' ) => {
-    return async ( dispatch ) => {
-        dispatch( startLoadingCountries() );
-
-        const { data } = await countryIns.get(`/countries/name?name=${ name }`);
-
-        dispatch( countriesByName(data) );
-        dispatch( setCurrentPage(1));
-        dispatch( searchedQueary(name) );
-        
-    }
-}
-
-export const handleSearch = ( ) => {
-    return async (dispatch) => {
-        dispatch( searchPerformed(true) )
-        dispatch( searchPerformed(false) )
-    }
+    dispatch(setCountries(data));
+    dispatch(setCurrentPage(page));
   };
+};
 
-  export const getCountryById = ( id ) => {
-    return async (dispatch) => {
+export const getCountryByName = (name = "", page = 1) => {
+  return async (dispatch) => {
+    dispatch(startLoadingCountries());
 
-        const { data } = await countryIns.get(`/countries/${ id }`);
+    const { data } = await countryIns.get(`/countries/name?name=${name}`);
+    
+    dispatch(countriesByName(data));
+    dispatch(searchedQueary(name))
+    dispatch(setCurrentPage(page));
+  };
+};
 
-        dispatch( countriesById( data ) )
-        
-    }
+export const handleSearch = () => {
+  return async (dispatch) => {
+    dispatch(searchPerformed(true));
+    dispatch(searchPerformed(false));
+  };
+};
+
+export const cleanQueary = () => {
+  return async (dispatch) => {
+    dispatch(searchedQueary(''))
   }
+}
+
+export const resetSearch = () => {
+  return async (dispatch) => {
+    dispatch(cleanSearch());
+  };
+};
+
+export const getCountryById = (id) => {
+  return async (dispatch) => {
+    const { data } = await countryIns.get(`/countries/${id}`);
+
+    dispatch(countriesById(data));
+  };
+};

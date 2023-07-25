@@ -16,9 +16,18 @@ ActivityMod( database );
 
 const { Country, Activity } = database.models;
 
-Country.belongsToMany(Activity, { through: "CountriesActivities"});
-Activity.belongsToMany(Country, { through: "CountriesActivities"});
+// Country.hasMany( Activity, {
+//     foreignKey: 'countryId', // This refers to the foreign key column in the Activity model.
+//     allowNull: false, // This enforces that each activity must be associated with a country.
+//     onDelete: 'CASCADE', // This will automatically delete associated activities when a country is deleted.
+//   });
 
+Activity.belongsTo( Country, {
+    foreignKey: 'countryId', // This will create a foreign key column named 'countryId' in the Activity model.
+    allowNull: false, // This enforces that each activity must be associated with a country.
+  });
+
+  Country.hasMany(Activity, { foreignKey: 'countryId', sourceKey: 'id' });
 
 
 

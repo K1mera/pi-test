@@ -18,14 +18,15 @@ const createActivity = async (activity, countryId) => {
         difficulty,
         duration_hours,
         season,
+        countryId
     });
 
-    const country = await Country.findByPk(countryId);
-    if (!country) {
-        throw new Error(`Country with ID ${countryId} not found`);
-    }
+    // const country = await Country.findByPk(countryId);
+    // if (!country) {
+    //     throw new Error(`Country with ID ${countryId} not found`);
+    // }
 
-    await newActivity.addCountry(country);
+    // await newActivity.addCountry(country);
 
     return newActivity;
 }

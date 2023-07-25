@@ -4,5 +4,5 @@
     display: flex;
     flex-direction: column;
     gap: 15px !important;
-    justify-content: center;
+    justify-content: flex-start;
 }

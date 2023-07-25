@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { CardCountry } from "./CardCountry";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries, getCountryById } from "../../store/";
+import { getCountries, getCountryByName, searchedQueary,  } from "../../store/";
 
 import styles from "./CountriesList.module.css";
 
@@ -11,19 +11,26 @@ export const CountriesList = () => {
     (state) => state.countries
   );
 
+  
   const startIndex = (currentPage - 1) * 8;
 
   useEffect(() => {
     if (queryParam === "") {
       dispatch(getCountries(currentPage));
     }
-  }, [dispatch, currentPage, queryParam]);
+    dispatch(getCountryByName(queryParam, currentPage))
+  }, [dispatch, currentPage, queryParam, totalPages]);
 
-  const filteredCountries = queryParam
-    ? countries.filter((country) =>
-        country.name.toLowerCase().includes(queryParam.toLowerCase())
-      )
-    : countries;
+  // useEffect(() => {
+  
+  // }, [])
+  
+
+  // const filteredCountries = queryParam
+  //   ? countries.filter((country) =>
+  //       country.name.toLowerCase().includes(queryParam.toLowerCase())
+  //     )
+  //   : countries;
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -36,7 +43,7 @@ export const CountriesList = () => {
       dispatch(getCountries(currentPage + 1));
     }
   };
-
+  
   // const handleCountryClick = (id) => {
   //   dispatch(getCountryById(id));
   //   // console.log(id)
@@ -46,7 +53,7 @@ export const CountriesList = () => {
     <>
       <section className={styles.cardListContent}>
         <ul className={styles.cardList}>
-          {filteredCountries.slice(startIndex, startIndex + 8).map((item) => (
+          {countries.slice(startIndex, startIndex + 8).map((item) => (
             <CardCountry
               key={item.id}
               id={item.id}
